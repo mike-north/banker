@@ -2,9 +2,9 @@ language: node_js
 node_js:
 - '0.12'
 - '0.10'
+- 'iojs'
 
 env:
-  matrix:
-  	- BANKER_TEST_SUITE=jscs
-  	- BANKER_TEST_SUITE=jshint
-  	- BANKER_TEST_SUITE=mocha
+- BANKER_TEST_SUITE=jscs
+- BANKER_TEST_SUITE=jshint
+- BANKER_TEST_SUITE=mocha
