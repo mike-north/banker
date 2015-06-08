@@ -4,6 +4,10 @@ node_js:
 - '0.10'
 - 'iojs'
 
+cache:
+  directories:
+    - node_modules
+
 env:
 - BANKER_TEST_SUITE=jscs
 - BANKER_TEST_SUITE=jshint
