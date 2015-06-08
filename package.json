@@ -33,6 +33,7 @@
     "koa": "^0.21.0"
   },
   "devDependencies": {
+    "codeclimate-test-reporter": "0.0.4",
     "jscs": "^1.13.1",
     "jshint": "^2.8.0",
     "mocha": "^2.2.5"
