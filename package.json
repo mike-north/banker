@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node index.js --harmony",
-    "test": "mocha"
+    "test": "./bin/run-tests.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,8 @@
     "koa": "^0.21.0"
   },
   "devDependencies": {
+    "jscs": "^1.13.1",
+    "jshint": "^2.8.0",
     "mocha": "^2.2.5"
   }
 }

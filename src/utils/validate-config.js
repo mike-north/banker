@@ -9,8 +9,8 @@ module.exports = {
   environment() {
     let errors = [];
     requiredEnvVars.forEach(function(v) {
-      if (!process.env[v]) {
-        let errorStr = `Missing ENV variable: ${v}`;
+      if (!process.env[v]){
+          let errorStr = `Missing ENV variable: ${v}`;
         errors.push(errorStr)
         process.stderr.write(chalk.red(`${errorStr}\n`));
       } else {
