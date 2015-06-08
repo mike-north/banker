@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node index.js --harmony",
-    "test": "./bin/run-tests.js"
+    "test": "bin/run-tests.sh"
   },
   "repository": {
     "type": "git",
