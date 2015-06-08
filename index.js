@@ -18,8 +18,11 @@ const redis = new Redis({
   password: process.env.REDIS_SECRET,
 });
 
+console.log('Redis initialized', redis);
+
 app.use(function* () {
   this.body = 'hello world';
+  yield 1;
 });
 
 app.listen(process.env.PORT || 3000);
