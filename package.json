@@ -1,0 +1,38 @@
+{
+  "name": "banker",
+  "version": "0.0.1",
+  "description": "A full-featured asset serving layer for single-page apps",
+  "main": "index.js",
+  "engines": {
+    "iojs": "2.1.x"
+  },
+  "scripts": {
+    "start": "node index.js --harmony",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truenorth/banker.git"
+  },
+  "keywords": [
+    "iojs"
+  ],
+  "author": {
+    "name": "Mike North",
+    "email": "michael.l.north@gmail.com",
+    "url": "http://mike.works"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/truenorth/banker/issues"
+  },
+  "homepage": "https://github.com/truenorth/banker#readme",
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "ioredis": "^1.4.0",
+    "koa": "^0.21.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5"
+  }
+}
