@@ -9,6 +9,5 @@ cache:
     - node_modules
 
 env:
-- BANKER_TEST_SUITE=jscs
-- BANKER_TEST_SUITE=jshint
+- BANKER_TEST_SUITE=style
 - BANKER_TEST_SUITE=mocha

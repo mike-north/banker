@@ -26,8 +26,7 @@ mocha() {
 }
 
 case $BANKER_TEST_SUITE in
-	jscs) 	jscs;;
-	jshint) jshint;;
+	style) 	jshint && jscs;;
 	mocha) 	mocha ;;
 	*)		jscs && jshint && mocha;;
 esac
