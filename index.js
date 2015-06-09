@@ -1,11 +1,11 @@
 'use strict';
 
-var validateConfig = require('./src/utils/validate-config');
-var express = require('express');
-var app = express();
-var datasrc = require('./src/datasrc');
+const validateConfig = require('./src/utils/validate-config');
+const express = require('express');
+const app = express();
+const datasrc = require('./src/datasrc');
 
-var configErrors = validateConfig.environment();
+const configErrors = validateConfig.environment();
 
 if (configErrors.length > 0) {
   process.stderr.write('\nConfiguration errors detected. Shutting down.\n');
