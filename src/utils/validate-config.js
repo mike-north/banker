@@ -2,8 +2,11 @@
 
 var chalk = require('chalk');
 
-var requiredEnvVars = ['REDIS_HOST', 'REDIS_PORT', 'REDIS_SECRET'];
-var secretEnvVars = ['REDIS_SECRET'];
+var requiredEnvVars = [
+  'BANKER_REDIS_HOST',
+  'BANKER_REDIS_PORT',
+  'BANKER_REDIS_SECRET', ];
+var secretEnvVars = ['BANKER_REDIS_SECRET'];
 
 module.exports = {
   environment: function() {
