@@ -3,7 +3,7 @@
 var validateConfig = require('./src/utils/validate-config');
 var express = require('express');
 var app = express();
-var Redis = require('ioredis');
+var datasrc = require('./src/datasrc');
 
 var configErrors = validateConfig.environment();
 
@@ -12,16 +12,10 @@ if (configErrors.length > 0) {
   process.exit();
 }
 
-var redis = new Redis({
-  host: process.env.REDIS_HOST,
-  port: process.env.REDIS_PORT,
-  password: process.env.REDIS_SECRET,
+app.get('*', function(req, res) {
+  datasrc.getIndexHtml().then(function(data) {
+    res.send(data);
+  });
 });
 
-console.log('Redis initialized', redis);
-
-app.get('/', function(req, res) {
-  res.send('hello world');
-});
-
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.BANKER_PORT || 3030);
