@@ -29,13 +29,22 @@
   "homepage": "https://github.com/truenorth/banker#readme",
   "dependencies": {
     "chalk": "^1.0.0",
-    "ioredis": "^1.4.0",
-    "koa": "^0.21.0"
+    "express": "^4.12.4",
+    "ioredis": "^1.4.0"
   },
   "devDependencies": {
+    "blanket": "^1.1.7",
     "codeclimate-test-reporter": "0.0.4",
     "jscs": "^1.13.1",
     "jshint": "^2.8.0",
     "mocha": "^2.2.5"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [
+        "index.js",
+        "src/**/*.js"
+      ]
+    }
   }
 }

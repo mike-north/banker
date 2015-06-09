@@ -1,24 +1,24 @@
 'use strict';
 
-const chalk = require('chalk');
+var chalk = require('chalk');
 
-const requiredEnvVars = ['REDIS_HOST', 'REDIS_PORT', 'REDIS_SECRET'];
-const secretEnvVars = ['REDIS_SECRET'];
+var requiredEnvVars = ['REDIS_HOST', 'REDIS_PORT', 'REDIS_SECRET'];
+var secretEnvVars = ['REDIS_SECRET'];
 
 module.exports = {
-  environment() {
-    let errors = [];
+  environment: function() {
+    var errors = [];
     requiredEnvVars.forEach(function(v) {
       if (!process.env[v]) {
-        let errorStr = `Missing ENV variable: ${v}`;
+        var errorStr = 'Missing ENV variable: ' + v;
         errors.push(errorStr);
-        process.stderr.write(chalk.red(`${errorStr}\n`));
+        process.stderr.write(chalk.red(errorStr + '\n'));
       } else {
         process.stdout.write(
           chalk.green(
-            `${v}:\t${secretEnvVars.indexOf(v) >= 0 ?
+            v + ':\t' + (secretEnvVars.indexOf(v) >= 0 ?
              '*********' :
-             process.env[v]}\n`
+             process.env[v]) + '\n'
           )
         );
       }
