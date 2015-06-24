@@ -6,6 +6,22 @@
 [![Dependency Status](https://david-dm.org/truenorth/banker.svg)](https://david-dm.org/truenorth/banker)
 [![devDependency Status](https://david-dm.org/truenorth/banker/dev-status.svg)](https://david-dm.org/truenorth/banker#info=devDependencies)
 
+Banker is an asset serving layer built for single-page apps. It's built around the [sam e conventions as ember-cli-deploy](https://www.npmjs.com/package/ember-cli-deploy), meaning that it expects to find various `index.html` files available in a Redis server. 
+
+Key               | Value
+------------------|----------
+myapp:current     | `myapp:7fa8d0`
+myapp:7fa8d0c     | `<html>...</html>`
+myapp:48180ab     | `<html>...</html>`
+myapp:857f81a     | `<html>...</html>`
+
+The general idea is that you have an app that manages the data in Redis (via developer deploys, CI pipeline, etc...) and this little server keeps running, eventually making your new static assets available with zero downtime.
+
+#### Requirements
+* Node.js >= `0.10.0` (>= `0.12.0` or `iojs` reccomended)
+* Somewhere to deploy this app (i.e., Heroku)
+* A Redis server (i.e., Heroku free Redis)
+
 ## Configuration
 
 The primary means of configuring banker is by environment variables
@@ -14,6 +30,7 @@ The primary means of configuring banker is by environment variables
 
  Variable         | Required | Default       | Description
 ------------------|----------|---------------|------------------------
+`APP_NAME`        | yes      |               | App name to use when looking for versions in Redis
 `PORT`            | no       | `3030`        | Port to serve assets on
 
 ### Redis configuration
