@@ -14,19 +14,15 @@ The primary means of configuring banker is by environment variables
 
  Variable         | Required | Default       | Description
 ------------------|----------|---------------|------------------------
-`BANKER_PORT`     | no       | `3030`        | Port to serve assets on
-`BANKER_DATASRC`  | yes      | `redis`       | Data source to get assets from
-`BANKER_ENV`      | no       | `development` | Banker runtime environment
+`PORT`            | no       | `3030`        | Port to serve assets on
 
 ### Redis configuration
 
-If `DATASRC === 'redis'`, the following will be additionally required
-
  Variable              | Required | Default       | Description
 -----------------------|----------|---------------|------------------------
-`BANKER_REDIS_HOST`    | yes      |               | Redis hostname
-`BANKER_REDIS_PORT`    | yes      |               | Redis port
-`BANKER_REDIS_SECRET`  | yes      |               | Redis secret
-`BANKER_REDIS_URL`     | yes      |               | Redis url
+`REDIS_HOST`           | yes      |               | Redis hostname
+`REDIS_PORT`           | yes      |               | Redis port
+`REDIS_SECRET`         | yes      |               | Redis secret
+`REDIS_URL`            | yes      |               | Redis url
 
-*note*: It's required that you either provide a value for `BANKER_REDIS_URL` or values for the other three parameters
+*note*: It's required that you either provide a value for `REDIS_URL` or values for the other three parameters
