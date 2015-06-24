@@ -12,12 +12,12 @@ labeledLine() {
 
 jscs() {
 	labeledLine 'JSCS'
-	./node_modules/jscs/bin/jscs index.js src/**/*.js test/**/*.js
+	./node_modules/jscs/bin/jscs src/**/*.js test/**/*.js
 }
 
 jshint() {
 	labeledLine 'JSHINT' 
-	./node_modules/jshint/bin/jshint index.js src/**/*.js test/**/*.js
+	./node_modules/jshint/bin/jshint src/**/*.js test/**/*.js
 }
 
 mocha() {

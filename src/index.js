@@ -1,6 +1,8 @@
 'use strict';
 
 var validateConfig = require('./utils/validate-config');
+var redisConfig = require('./utils/redis-config');
+
 var koa = require('koa');
 var app = koa();
 var Redis = require('ioredis');
@@ -12,11 +14,7 @@ if (configErrors.length > 0) {
   process.exit();
 }
 
-var redis = new Redis({
-  host: process.env.REDIS_HOST,
-  port: process.env.REDIS_PORT,
-  password: process.env.REDIS_SECRET,
-});
+var redis = new Redis(redisConfig(process.env));
 
 async function tryGetVersion(appName, appVersion) {
 	return redis.get(`${appName}:${appVersion}`).then(data => {
