@@ -16,20 +16,18 @@ if (configErrors.length > 0) {
   process.exit();
 }
 
-app.use(function *(next) {
+app.use(function* (next) {
   if (/^\/api\//.test(this.path)) {
     yield next;
-  }
-  else {
+  } else {
     yield serveApp;
   }
 });
 
-app.use(function *(next) {
+app.use(function* (next) {
   if (this.path === '/api/apps') {
     yield api.apps;
-  }
-  else {
+  } else {
     yield next;
   }
 });

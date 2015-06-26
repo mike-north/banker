@@ -4,5 +4,6 @@
   "description": "An asset serving layer for single-page apps",
   "repository": "https://github.com/truenorth/banker",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "koa", "static"]
+  "keywords": ["node", "koa", "static"],
+  "addons": ["heroku-redis:hobby-dev"]
 }
