@@ -1,43 +1,29 @@
 'use strict';
 
-var validateConfig = require('./utils/validate-config');
-var redisConfig = require('./utils/redis-config');
+const validateConfig =  require('./utils/validate-config');
+const app =             require('koa')();
+const redis =           require('./utils/redis');
 
-var koa = require('koa');
-var app = koa();
-var Redis = require('ioredis');
+// Routes
+const serveApp =        require('./routes/serve-app');
+const api =             require('./routes/api');
 
-var configErrors = validateConfig.environment();
+const port = process.env.PORT || 3000;
 
+const configErrors = validateConfig.environment();
 if (configErrors.length > 0) {
   process.stderr.write('\nConfiguration errors detected. Shutting down.\n');
   process.exit();
 }
 
-var redis = new Redis(redisConfig(process.env));
-
-async function tryGetVersion(appName, appVersion) {
-	return redis.get(`${appName}:${appVersion}`).then(data => {
-
-		if(/[a-zA-Z]+\:[abcdef0-9]+/.test(data)) {
-			let parts = data.split('\:');
-			return tryGetVersion(parts[0], parts[1]);
-		}
-		else {
-			return data;
-		}
-		console.log(data);
-		return data;
-	});
-};
-
-app.use(function *(){
-	// Serve
-	this.type = 'text/html; charset=utf-8';
-	let indexkey = process.env.APP_NAME + `:${(this.request.query.index_key || 'current')}`;
-	let version = yield tryGetVersion(indexkey);
-	this.body = version;
+app.use(function *(next) {
+  if (/^\/api\//.test(this.path)) {
+    yield next;
+  }
+  else {
+    yield serveApp;
+  }
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(port);
 
