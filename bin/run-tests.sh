@@ -16,17 +16,17 @@ jscs() {
 }
 
 jshint() {
-	labeledLine 'JSHINT' 
+	labeledLine 'JSHINT'
 	./node_modules/jshint/bin/jshint src/**/*.js test/**/*.js
 }
 
 mocha() {
-	labeledLine 'MOCHA' 
+	labeledLine 'MOCHA'
 	./node_modules/mocha/bin/mocha
 }
 
 case $BANKER_TEST_SUITE in
 	style) 	jshint && jscs;;
 	mocha) 	mocha ;;
-	*)		jscs && jshint && mocha;;
+	*)		mocha;;
 esac

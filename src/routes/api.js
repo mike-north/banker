@@ -1,5 +1,6 @@
 module.exports = {
-  versions: function *() {
+  versions: function*() {
     this.body = 42;
-  }
-}
+    yield;
+  },
+};

@@ -1,4 +1,4 @@
-const redis =           require('../utils/redis');
+const redis = require('../utils/redis');
 
 async function tryGetVersion(key) {
   return redis.get(key).then(data => {
