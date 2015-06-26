@@ -6,7 +6,7 @@
 [![Dependency Status](https://david-dm.org/truenorth/banker.svg)](https://david-dm.org/truenorth/banker)
 [![devDependency Status](https://david-dm.org/truenorth/banker/dev-status.svg)](https://david-dm.org/truenorth/banker#info=devDependencies)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https%3A%2F%2Fgithub.com%2Ftruenorth%2Fbanker%2Ftree%2Fmaster)
 
 
 Banker is an asset serving layer built for single-page apps. It's built around the [same conventions as ember-cli-deploy](https://www.npmjs.com/package/ember-cli-deploy), meaning that it expects to find various `index.html` files available in a Redis server. 
