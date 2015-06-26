@@ -25,5 +25,14 @@ app.use(function *(next) {
   }
 });
 
+app.use(function *(next) {
+  if (this.path === '/api/apps') {
+    yield api.apps;
+  }
+  else {
+    yield next;
+  }
+});
+
 app.listen(port);
 
