@@ -2,7 +2,7 @@
   "name": "banker",
   "version": "0.0.1",
   "description": "A full-featured asset serving layer for single-page apps",
-  "main": "src/index.js",
+  "main": "./src/index.js",
   "engines": {
     "iojs": "2.1.x"
   },
