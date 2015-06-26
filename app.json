@@ -2,8 +2,9 @@
 {
   "name": "Banker v0.0.1",
   "description": "An asset serving layer for single-page apps",
+  "websitez": "https://github.com/truenorth/banker",
   "repository": "https://github.com/truenorth/banker",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "koa", "static"],
+  "keywords": ["node", "koa", "static", "nodejs", "emberjs"],
   "addons": ["heroku-redis:hobby-dev"]
 }
