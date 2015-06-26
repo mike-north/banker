@@ -2,27 +2,33 @@
 
 var chalk = require('chalk');
 
-var requiredEnvVars = ['REDIS_HOST', 'REDIS_PORT', 'REDIS_SECRET'];
-var secretEnvVars = ['REDIS_SECRET'];
+function logEnv(key, secret=false) {
+  process.stdout.write(
+    chalk.green(`
+      ${key}: \t${secret ? '*********' : process.env[v]}\n
+    `)
+  );
+}
+
 
 module.exports = {
-  environment: function() {
-    var errors = [];
-    requiredEnvVars.forEach(function(v) {
-      if (!process.env[v]) {
-        var errorStr = 'Missing ENV variable: ' + v;
-        errors.push(errorStr);
-        process.stderr.write(chalk.red(errorStr + '\n'));
-      } else {
-        process.stdout.write(
-          chalk.green(
-            v + ':\t' + (secretEnvVars.indexOf(v) >= 0 ?
-             '*********' :
-             process.env[v]) + '\n'
-          )
-        );
-      }
-    });
+
+  _redis: function(errors=[]) {
+    if (!!process.env['REDIS_URL']) {
+      logEnv('REDIS_URL', true);
+    } else if (!!process.env['REDIS_HOST'] &&
+               !!process.env['REDIS_PORT'] &&
+               !!process.env['REDIS_SECRET']) {
+      logEnv('REDIS_PORT');
+      logEnv('REDIS_HOST');
+      logEnv('REDIS_SECRET', true);
+    } else {
+      errors.push('Must provide either REDIS_URL or {REDIS_PORT, REDIS_HOST, REDIS_SECRET}');
+    }
+  },
+
+  environment: function(errors=[]) {
+    this._redis(errors);
     return errors;
   },
 };
