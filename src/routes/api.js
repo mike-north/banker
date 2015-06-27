@@ -1,54 +1,59 @@
-const redis = require('../utils/redis');
+const express = require('express');
+const RSVP    = require('rsvp');
+const redis   = require('../utils/redis');
 
-async function getVersions(appId) {
+function getVersions(appId) {
   return redis.keys(`${appId}\:*`).then(data => {
     return data.map(key => {
-      return {id: key.split('\:')[1]};
+      return {id: key};
     })
   });
 }
 
-
-async function getApps() {
+function getApps() {
   return redis.keys('*\:current').then(data => {
-    return data.map(key => {
-      let appName = key.split('\:')[0];
-      let versions = getVersions();
-      return {id: appName, versions};
+    return data.map(key => key.split('\:')[0]);
+  }).then(appNames => {
+    let promises = appNames.map(appName => {
+      return getVersions(appName).then(versions => {
+        return  {id: appName, versions: versions.map(v => v.id)};
+      });
     });
+    return RSVP.all(promises);
   });
 }
 
+const router = express.Router();
+router.use((req, res, next) => {
+  res.type('json');
+  next();
+});
 
-module.exports = {
+router.get('/apps', (req, res) => {
+  getApps().then(apps => {
+    let versions = apps
+      .map(a => a.versions)
+      .reduce((acc, i) => acc.concat(i), [])
+      .reduce(function(p, c) {
+          if (p.indexOf(c) < 0) p.push(c);
+          return p;
+      }, [])
+      .map(id => {
+        let parts = id.split('\:');
+        return {id, app_id: parts[0]};
+      });
+    res.send(JSON.stringify({apps, versions}));
+  });
+});
 
-  base: function(params) {
-    return function*() {
-      this.body = {};
-    }
-  },
-
-  app: function(params) {
-    return function*() {
-      let versions = yield getVersions(params.id);
-      this.body = {
-        app: {
-          id: params.id,
-          versions: versions
-        }
-      };
-    };
-  },
-
-  apps: function*(params) {
-    let apps = yield getApps();
-    this.body = { apps };
-  },
-
-  versions: function(params) {
-    return function*() {
-      let versions = yield getVersions(params.id);
-      this.body = { versions };
-    }
-  },
-};
+router.get('/app/:id', (req, res) => {
+  let app = {id: req.params.id};
+  getVersions(req.params.id).then(versions => {
+    app.versions = versions.map(v => v.id);
+    versions = versions.map(v => {
+      return {id: v.id, app_id: app.id};
+    });
+    res.send(JSON.stringify({app, versions}));
+  });
+});
+module.exports = router;

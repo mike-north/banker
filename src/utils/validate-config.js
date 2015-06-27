@@ -4,7 +4,7 @@ var chalk = require('chalk');
 
 function logEnv(key, secret=false) {
   process.stdout.write(
-    chalk.green(`\t${key}: \t${secret ? '*********' : process.env[v]}\n`)
+    chalk.green(`\t${key}: \t${secret ? '*********' : process.env[key]}\n`)
   );
 }
 

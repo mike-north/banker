@@ -1,4 +1,9 @@
+const express = require('express');
+
 const redis = require('../utils/redis');
+
+
+const router = express.Router();
 
 async function tryGetVersion(key) {
   return redis.get(key).then(data => {
@@ -15,10 +20,12 @@ async function tryGetVersion(key) {
 };
 
 
-module.exports = function *(){
-  // Serve
-  this.type = 'text/html; charset=utf-8';
-  let indexkey = process.env.APP_NAME + `:${(this.request.query.index_key || 'current')}`;
-  let version = yield tryGetVersion(indexkey);
-  this.body = version;
-};
+
+router.get('/', function (req, res) {
+  let indexkey = process.env.APP_NAME + `:${(req.query.index_key || 'current')}`;
+  tryGetVersion(indexkey).then(data => {
+    res.send(data);
+  })
+});
+
+module.exports = router;
