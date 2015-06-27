@@ -3,7 +3,6 @@
 const express =         require('express');
 
 const validateConfig =  require('./utils/validate-config');
-const redis =           require('./utils/redis');
 
 // Routes
 const serveApp =        require('./routes/serve-app');

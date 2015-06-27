@@ -2,7 +2,6 @@ const express = require('express');
 
 const redis = require('../utils/redis');
 
-
 const router = express.Router();
 
 function tryGetVersion(key) {
