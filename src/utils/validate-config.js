@@ -4,9 +4,7 @@ var chalk = require('chalk');
 
 function logEnv(key, secret=false) {
   process.stdout.write(
-    chalk.green(`
-      ${key}: \t${secret ? '*********' : process.env[v]}\n
-    `)
+    chalk.green(`\t${key}: \t${secret ? '*********' : process.env[key]}\n`)
   );
 }
 
@@ -23,7 +21,8 @@ module.exports = {
       logEnv('REDIS_HOST');
       logEnv('REDIS_SECRET', true);
     } else {
-      errors.push('Must provide either REDIS_URL or {REDIS_PORT, REDIS_HOST, REDIS_SECRET}');
+      errors.push('Must provide either REDIS_URL or ' +
+        '{REDIS_PORT, REDIS_HOST, REDIS_SECRET}');
     }
   },
 

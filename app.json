@@ -6,5 +6,11 @@
   "repository": "https://github.com/truenorth/banker",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["node", "koa", "static", "nodejs", "emberjs"],
-  "addons": ["heroku-redis:hobby-dev"]
+  "addons": ["heroku-redis:hobby-dev"],
+  "env": {
+    "APP_NAME": {
+      "description": "Name of your app in redis",
+      "value": ""
+    }
+  }
 }
