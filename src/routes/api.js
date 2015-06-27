@@ -6,7 +6,7 @@ function getVersions(appId) {
   return redis.keys(`${appId}\:*`).then(data => {
     return data.map(key => {
       return {id: key};
-    })
+    });
   });
 }
 
@@ -16,7 +16,7 @@ function getApps() {
   }).then(appNames => {
     let promises = appNames.map(appName => {
       return getVersions(appName).then(versions => {
-        return  {id: appName, versions: versions.map(v => v.id)};
+        return { id: appName, versions: versions.map(v => v.id) };
       });
     });
     return RSVP.all(promises);
@@ -35,12 +35,14 @@ router.get('/apps', (req, res) => {
       .map(a => a.versions)
       .reduce((acc, i) => acc.concat(i), [])
       .reduce(function(p, c) {
-          if (p.indexOf(c) < 0) p.push(c);
-          return p;
+        if (p.indexOf(c) < 0) {
+          p.push(c);
+        }
+        return p;
       }, [])
       .map(id => {
         let parts = id.split('\:');
-        return {id, app_id: parts[0]};
+        return { id, appId: parts[0] };
       });
     res.send(JSON.stringify({apps, versions}));
   });
@@ -51,9 +53,9 @@ router.get('/app/:id', (req, res) => {
   getVersions(req.params.id).then(versions => {
     app.versions = versions.map(v => v.id);
     versions = versions.map(v => {
-      return {id: v.id, app_id: app.id};
+      return { id: v.id, appId: app.id };
     });
-    res.send(JSON.stringify({app, versions}));
+    res.send(JSON.stringify({ app, versions }));
   });
 });
 module.exports = router;
