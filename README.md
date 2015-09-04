@@ -1,12 +1,12 @@
 # Banker
 
-[![Build Status](https://travis-ci.org/truenorth/banker.svg?branch=master)](https://travis-ci.org/truenorth/banker)
-[![Code Climate](https://codeclimate.com/github/truenorth/banker/badges/gpa.svg)](https://codeclimate.com/github/truenorth/banker)
-[![Test Coverage](https://codeclimate.com/github/truenorth/banker/badges/coverage.svg)](https://codeclimate.com/github/truenorth/banker/coverage)
-[![Dependency Status](https://david-dm.org/truenorth/banker.svg)](https://david-dm.org/truenorth/banker)
-[![devDependency Status](https://david-dm.org/truenorth/banker/dev-status.svg)](https://david-dm.org/truenorth/banker#info=devDependencies)
+[![Build Status](https://travis-ci.org/mike-north/banker.svg?branch=master)](https://travis-ci.org/mike-north/banker)
+[![Code Climate](https://codeclimate.com/github/mike-north/banker/badges/gpa.svg)](https://codeclimate.com/github/mike-north/banker)
+[![Test Coverage](https://codeclimate.com/github/mike-north/banker/badges/coverage.svg)](https://codeclimate.com/github/mike-north/banker/coverage)
+[![Dependency Status](https://david-dm.org/mike-north/banker.svg)](https://david-dm.org/mike-north/banker)
+[![devDependency Status](https://david-dm.org/mike-north/banker/dev-status.svg)](https://david-dm.org/mike-north/banker#info=devDependencies)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https%3A%2F%2Fgithub.com%2Ftruenorth%2Fbanker%2Ftree%2Fmaster)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https%3A%2F%2Fgithub.com%2Fmike-north%2Fbanker%2Ftree%2Fmaster)
 
 
 Banker is an asset serving layer built for single-page apps. It's built around the [same conventions as ember-cli-deploy](https://www.npmjs.com/package/ember-cli-deploy), meaning that it expects to find various `index.html` files available in a Redis server. 
