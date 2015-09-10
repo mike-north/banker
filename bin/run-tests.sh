@@ -12,17 +12,17 @@ labeledLine() {
 
 jscs() {
 	labeledLine 'JSCS'
-	./node_modules/jscs/bin/jscs src/**/*.js test/**/*.js
+	./node_modules/.bin/jscs src/**/*.js test/**/*.js
 }
 
 jshint() {
 	labeledLine 'JSHINT'
-	./node_modules/jshint/bin/jshint src/**/*.js test/**/*.js
+	./node_modules/.bin/jshint src/**/*.js test/**/*.js
 }
 
 mocha() {
 	labeledLine 'MOCHA'
-	./node_modules/mocha/bin/mocha
+	./node_modules/.bin/mocha
 }
 
 case $BANKER_TEST_SUITE in

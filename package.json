@@ -1,18 +1,18 @@
 {
   "name": "banker",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A full-featured asset serving layer for single-page apps",
   "main": "./src/index.js",
   "engines": {
     "node": "4.0.0"
   },
   "scripts": {
-    "start": "node_modules/babel/bin/babel-node src/index.js --harmony",
+    "start": "node_modules/.bin/babel-node src/index.js --harmony",
     "test": "bin/run-tests.sh"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/truenorth/banker.git"
+    "url": "git+https://github.com/mike-north/banker.git"
   },
   "keywords": [
     "iojs"
@@ -24,9 +24,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/truenorth/banker/issues"
+    "url": "https://github.com/mike-north/banker/issues"
   },
-  "homepage": "https://github.com/truenorth/banker#readme",
+  "homepage": "https://github.com/mike-north/banker#readme",
   "dependencies": {
     "babel": "^5.6.4",
     "chalk": "^1.0.0",
