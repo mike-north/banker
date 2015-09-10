@@ -4,7 +4,7 @@
   "description": "A full-featured asset serving layer for single-page apps",
   "main": "./src/index.js",
   "engines": {
-    "iojs": "2.1.x"
+    "iojs": "4.0.0"
   },
   "scripts": {
     "start": "node_modules/babel/bin/babel-node src/index.js --harmony",
