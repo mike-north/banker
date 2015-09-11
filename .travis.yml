@@ -2,12 +2,16 @@ language: node_js
 node_js:
 - '0.12'
 - '0.10'
-- 'iojs'
-
+- iojs
 cache:
   directories:
-    - node_modules
-
+  - node_modules
+notifications:
+  slack: levanto:7eLih83Ry8Q8XPwFCAjI02r2
 env:
-# - BANKER_TEST_SUITE=style
 - BANKER_TEST_SUITE=mocha
+deploy:
+  provider: heroku
+  app: levanto-asl
+  api_key:
+    secure: fzFiS4TF+Pwyi86B6o4eXILRLLhuyqUr0zYobRBLP7gbmUhH8+Fln3JRTbIqIIWh5VwKLG+KOZeolAgJQABiCEEO3SBrKt/d/LymFW3+Gfd2bwiz2PA+8VzoGg/1brn2TE6IpIpLdJrDso7chyLCXI5cwgqTaT8Yki11ErOdzVU7yUNz5YAqmqrwVVFYMq7k62D7q3dHVGzIAwsblKx8JFDaMAN8QJ5osHrNiwFk2g//mJFI0wqf0tHQtEV3iVSgeDgvQ7uRiRf0uum43/KvyalgBLMn/CHM9mj/53LknBCNYeerZKfwIw+75NXOTBGSHuZzf9gjWvb3SIfNZTq2eMeXG3ond0H60P4skXLbjPZ3OLDboYVpQ/lWFlFytX0p7O6TPoSxb7trBxPNb36r11vp2B7I483LKMdTfRDhhrMI3LdY9JfIF6t8BNCeDIaQ1P6fyiSYsyF2L5B16TMMAWlckQFzws1s1rW3XEDF+qpzE4dyr2u8TRuVX3VzL5i26x0JgoY/HSd9XTmUuONcGbUY84PQ+Y9RWQaCEY0mOMWT67wBy0J2xk4hvEYOBGwLWJF4hkrQrFLl9VHNACI2roOuRE89fzgEJh8pGqNc0c6NPb/UmL7g4OfWOwt0d5Eh4KjzgLTEnqoIzBYM/T/D6HzztiGRsaG+Ngqt9wC2+XE=
