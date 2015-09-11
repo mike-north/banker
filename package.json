@@ -1,7 +1,7 @@
 {
-  "name": "banker",
+  "name": "levanto-asl",
   "version": "0.1.0",
-  "description": "A full-featured asset serving layer for single-page apps",
+  "description": "Asset serving layer for Levanto Financial apps",
   "main": "./src/index.js",
   "engines": {
     "node": "4.0.0"
@@ -24,9 +24,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mike-north/banker/issues"
+    "url": "https://github.com/Levanto-Financial/asl/issues"
   },
-  "homepage": "https://github.com/mike-north/banker#readme",
+  "homepage": "https://github.com/Levanto-Financial/asl#readme",
   "dependencies": {
     "babel": "^5.6.4",
     "chalk": "^1.0.0",
