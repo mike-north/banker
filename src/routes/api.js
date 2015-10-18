@@ -1,6 +1,7 @@
 const express = require('express');
 const RSVP    = require('rsvp');
-const redis   = require('../utils/redis');
+
+// const redis   = require('../utils/redis');
 
 function getVersions(appId) {
   return redis.keys(`${appId}\:*`).then(data => {
