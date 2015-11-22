@@ -1,13 +1,13 @@
 {
   "name": "banker",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A full-featured asset serving layer for single-page apps",
   "main": "./src/index.js",
   "engines": {
-    "node": "4.0.0"
+    "node": "5.0.0"
   },
   "scripts": {
-    "start": "node_modules/.bin/babel-node src/index.js --harmony",
+    "start": "node src/index.js",
     "test": "bin/run-tests.sh"
   },
   "repository": {
@@ -15,7 +15,8 @@
     "url": "git+https://github.com/mike-north/banker.git"
   },
   "keywords": [
-    "iojs"
+    "asset-serving",
+    "ember-cli-deploy"
   ],
   "author": {
     "name": "Mike North",
@@ -28,12 +29,7 @@
   },
   "homepage": "https://github.com/mike-north/banker#readme",
   "dependencies": {
-    "babel": "^5.6.4",
-    "chalk": "^1.0.0",
-    "express": "^4.13.0",
-    "ioredis": "^1.4.0",
-    "route-recognizer": "^0.1.9",
-    "rsvp": "^3.0.18"
+    "chalk": "^1.0.0"
   },
   "devDependencies": {
     "blanket": "^1.1.7",
