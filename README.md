@@ -21,28 +21,53 @@ myapp:857f81a     | `<html>...</html>`
 The general idea is that you have an app that manages the data in Redis (via developer deploys, CI pipeline, etc...) and this little server keeps running, eventually making your new static assets available with zero downtime.
 
 #### Requirements
-* Node.js >= `0.10.0` (>= `0.12.0` or `iojs` reccomended)
+* Node.js >= `5.0.0`
 * Somewhere to deploy this app (i.e., Heroku)
 * A Redis server (i.e., Heroku free Redis)
 
-## Configuration
+## Basic Configuration
 
-The primary means of configuring banker is by environment variables
+The one simple way of configuring banker is by environment variables
 
 ### General Configuration
 
  Variable         | Required | Default       | Description
 ------------------|----------|---------------|------------------------
 `APP_NAME`        | yes      |               | App name to use when looking for versions in Redis
-`PORT`            | no       | `3030`        | Port to serve assets on
+`PORT`            | no       | `3000`        | Port to serve assets on
 
 ### Redis configuration
 
  Variable              | Required | Default       | Description
 -----------------------|----------|---------------|------------------------
-`REDIS_HOST`           | yes      |               | Redis hostname
-`REDIS_PORT`           | yes      |               | Redis port
-`REDIS_SECRET`         | yes      |               | Redis secret
 `REDIS_URL`            | yes      |               | Redis url
 
-*note*: It's required that you either provide a value for `REDIS_URL` or values for the other three parameters
+## Advanced Configuration
+
+Banker can be consumed as a library in your own simple node.js app. You can then specify URL patterns to map to "apps" using regular expressions.
+
+```js
+
+const BankerServer = require('./server');
+const RedisDataSource = require('./datasource/redis');
+
+let server = new BankerServer({
+  datasource: new RedisDataSource({
+    url: 'redis://username:password@my.redis.url:12345',
+    apps: {
+      myapp: {
+        respondTo: [/^myapp.herokuapps.com/, /^myapp-old.herokuapps.com/]
+      },
+      myotherapp: {
+        respondTo: [/^www.myotherapp.com/]
+      },
+      noappfound: {
+        respondTo: [/^.*/]
+      }
+    }
+  }),
+});
+
+server.listen(3000);
+
+```

@@ -1,5 +1,6 @@
 {
     "preset": "node-style-guide",
     "esnext": true,
-    "verbose": true
+    "verbose": true,
+    "requireCapitalizedComments": null
 }

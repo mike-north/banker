@@ -1,24 +1,17 @@
 'use strict';
+const BankerServer = require('./server');
+const RedisDataSource = require('./datasource/redis');
 
-const express =         require('express');
+const chalk = require('chalk');
+const packageJson = require('../package.json');
 
-const validateConfig =  require('./utils/validate-config');
+console.log(chalk.green(`----------------------------------------
+Banker Asset Serving Layer v${packageJson.version}
+----------------------------------------`));
 
-// Routes
-const serveApp =        require('./routes/serve-app');
-const api =             require('./routes/api');
-
-const app =             express();
-
-const port = process.env.PORT || 3000;
-
-const configErrors = validateConfig.environment();
-if (configErrors.length > 0) {
-  process.stderr.write('\nConfiguration errors detected. Shutting down.\n');
-}
-
-app.use('/api/', api);
-app.use('/', serveApp);
-
-app.listen(port);
-
+let server = new BankerServer({
+  datasource: new RedisDataSource({
+    url: process.env.REDIS_URL,
+  }),
+});
+server.listen(process.env.PORT || 3000);
