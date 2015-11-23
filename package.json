@@ -4,10 +4,10 @@
   "description": "A full-featured asset serving layer for single-page apps",
   "main": "./src/index.js",
   "engines": {
-    "node": "5.0.0"
+    "node": "4.0.0"
   },
   "scripts": {
-    "start": "node src/index.js",
+    "start": "./node_modules/.bin/babel-node src/index.js --harmony",
     "test": "bin/run-tests.sh"
   },
   "repository": {
@@ -29,7 +29,14 @@
   },
   "homepage": "https://github.com/mike-north/banker#readme",
   "dependencies": {
-    "chalk": "^1.0.0"
+    "babel-cli": "^6.2.0",
+    "chalk": "^1.1.1",
+    "co": "^4.6.0",
+    "co-redis": "^2.0.0",
+    "core-object": "^1.1.0",
+    "koa": "^1.1.2",
+    "redis": "^2.3.1",
+    "rsvp": "^3.1.0"
   },
   "devDependencies": {
     "blanket": "^1.1.7",

@@ -21,7 +21,7 @@ myapp:857f81a     | `<html>...</html>`
 The general idea is that you have an app that manages the data in Redis (via developer deploys, CI pipeline, etc...) and this little server keeps running, eventually making your new static assets available with zero downtime.
 
 #### Requirements
-* Node.js >= `0.10.0` (>= `0.12.0` or `iojs` reccomended)
+* Node.js >= `5.0.0`
 * Somewhere to deploy this app (i.e., Heroku)
 * A Redis server (i.e., Heroku free Redis)
 
@@ -40,9 +40,6 @@ The primary means of configuring banker is by environment variables
 
  Variable              | Required | Default       | Description
 -----------------------|----------|---------------|------------------------
-`REDIS_HOST`           | yes      |               | Redis hostname
-`REDIS_PORT`           | yes      |               | Redis port
-`REDIS_SECRET`         | yes      |               | Redis secret
 `REDIS_URL`            | yes      |               | Redis url
 
-*note*: It's required that you either provide a value for `REDIS_URL` or values for the other three parameters
+

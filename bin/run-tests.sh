@@ -22,7 +22,7 @@ jshint() {
 
 mocha() {
 	labeledLine 'MOCHA'
-	./node_modules/.bin/mocha
+	./node_modules/.bin/babel-node ./node_modules/.bin/mocha --harmony
 }
 
 case $BANKER_TEST_SUITE in
