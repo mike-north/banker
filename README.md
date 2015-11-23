@@ -48,8 +48,8 @@ Banker can be consumed as a library in your own simple node.js app. You can then
 
 ```js
 
-const BankerServer = require('./server');
-const RedisDataSource = require('./datasource/redis');
+const BankerServer = require('banker/server');
+const RedisDataSource = require('banker/datasource/redis');
 
 let server = new BankerServer({
   datasource: new RedisDataSource({
