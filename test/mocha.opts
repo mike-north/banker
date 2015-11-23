@@ -1,3 +1,0 @@
---reporter dot
---ui bdd
-test/**/*.js

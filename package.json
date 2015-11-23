@@ -1,10 +1,10 @@
 {
   "name": "levanto-asl",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Asset serving layer for Levanto Financial apps",
   "main": "./src/index.js",
   "engines": {
-    "node": "4.0.0"
+    "node": "5.0.0"
   },
   "scripts": {
     "start": "node_modules/.bin/babel-node src/index.js --harmony",
@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mike-north/banker.git"
+    "url": "git+https://github.com/Levanto-Financial/asl.git"
   },
   "keywords": [
     "iojs"
   ],
   "author": {
     "name": "Mike North",
-    "email": "michael.l.north@gmail.com",
-    "url": "http://mike.works"
+    "email": "mnorth@levantofinancial.com",
+    "url": "http://levantofinancial.com"
   },
   "license": "MIT",
   "bugs": {
@@ -28,25 +28,6 @@
   },
   "homepage": "https://github.com/Levanto-Financial/asl#readme",
   "dependencies": {
-    "babel": "^5.6.4",
-    "chalk": "^1.0.0",
-    "express": "^4.13.0",
-    "ioredis": "^1.4.0",
-    "rsvp": "^3.0.18"
-  },
-  "devDependencies": {
-    "blanket": "^1.1.7",
-    "codeclimate-test-reporter": "0.0.4",
-    "jscs": "^1.13.1",
-    "jshint": "^2.8.0",
-    "mocha": "^2.2.5"
-  },
-  "config": {
-    "blanket": {
-      "pattern": [
-        "index.js",
-        "src/**/*.js"
-      ]
-    }
+    "banker-asl": "~0.2.1"
   }
 }

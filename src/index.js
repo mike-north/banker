@@ -1,24 +1,17 @@
 'use strict';
 
-const express =         require('express');
+const BankerServer = require('banker-asl/server');
+const RedisDataSource = require('banker-asl/datasource/redis');
 
-const validateConfig =  require('./utils/validate-config');
+let server = new BankerServer({
+  datasource: new RedisDataSource({
+    url: process.env.REDIS_URL || 'redis://h:pbtgp888ugmc2g4v5nsm63802f5@ec2-54-83-207-141.compute-1.amazonaws.com:22879',
+    apps: {
+      levanto: {
+        respondTo: [/^levanto-ui.herokuapps.com/, /^.*/],
+      },
+    },
+  }),
+});
 
-// Routes
-const serveApp =        require('./routes/serve-app');
-const api =             require('./routes/api');
-
-const app =             express();
-
-const port = process.env.PORT || 3000;
-
-const configErrors = validateConfig.environment();
-if (configErrors.length > 0) {
-  process.stderr.write('\nConfiguration errors detected. Shutting down.\n');
-}
-
-app.use('/api/', api);
-app.use('/', serveApp);
-
-app.listen(port);
-
+server.listen(3000 || process.env.PORT);
