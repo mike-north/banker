@@ -1,6 +1,6 @@
 {
   "name": "banker-asl",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A full-featured asset serving layer for single-page apps",
   "main": "./index.js",
   "engines": {
