@@ -1,5 +1,5 @@
 {
-  "name": "banker",
+  "name": "banker-asl",
   "version": "0.2.0",
   "description": "A full-featured asset serving layer for single-page apps",
   "main": "./src/index.js",
