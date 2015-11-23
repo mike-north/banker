@@ -3,7 +3,7 @@ const BankerServer = require('./server');
 const RedisDataSource = require('./datasource/redis');
 
 const chalk = require('chalk');
-const packageJson = require('../package.json');
+const packageJson = require('./package.json');
 
 console.log(chalk.green(`----------------------------------------
 Banker Asset Serving Layer v${packageJson.version}

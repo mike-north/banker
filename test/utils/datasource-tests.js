@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const Datasource = require('../../src/datasource/base');
+const Datasource = require('../../datasource/base');
 const RSVP = require('rsvp');
 
 describe('datasource', function() {

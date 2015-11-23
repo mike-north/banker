@@ -1,3 +1,5 @@
+'use strict';
+
 const CoreObject = require('core-object');
 const koa = require('koa');
 const assert = require('assert');
@@ -10,20 +12,24 @@ module.exports = CoreObject.extend({
     this.datasource = config.datasource;
     this.app = koa();
     this.app.use(function*(next) {
-      const start = new Date;
+      const start = new Date();
       yield next;
-      const ms = new Date - start;
+      const ms = new Date() - start;
       this.set('X-Response-Time', ms + 'ms');
     });
     this.app.use(function*(next) {
-      const start = new Date;
+      const start = new Date();
       yield next;
-      const ms = new Date - start;
-      console.log(`${chalk.green(this.method)} ${chalk.green(this.url)} ${chalk.white(ms + 'ms')}`);
+      const ms = new Date() - start;
+      console.log([
+        chalk.green(this.method),
+        chalk.green(this.url),
+        chalk.white(ms + 'ms'),
+      ].join(' '));
     });
     const datasource = this.datasource;
 
-    this.app.use(function*(next) {
+    this.app.use(function*(/*next*/) {
       yield datasource.getResponseForRequest(this.request).then(dsResponse => {
         this.set('X-App-Version-Requested', `${dsResponse.requestedVersion}`);
         this.set('X-App-Version-Served', `${dsResponse.resolvedVersion}`);

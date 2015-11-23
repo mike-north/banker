@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const RedisDatasource = require('../../src/datasource/redis');
+const RedisDatasource = require('../../datasource/redis');
 
 describe('redis-datasource', function() {
   it('should complain if no url exists', function() {
