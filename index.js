@@ -1,5 +1,5 @@
 // 'use strict';
-modules.exports = require('./server');
+module.exports = require('./server');
 // const RedisDataSource = require('./datasource/redis');
 
 // const chalk = require('chalk');
