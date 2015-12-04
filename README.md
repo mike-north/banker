@@ -56,6 +56,7 @@ let server = new BankerServer({
     url: 'redis://username:password@my.redis.url:12345',
     apps: {
       myapp: {
+        forceHttps: true, // Incoming http requests will be redirected to https
         respondTo: [/^myapp.herokuapps.com/, /^myapp-old.herokuapps.com/]
       },
       myotherapp: {
