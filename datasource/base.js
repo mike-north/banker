@@ -90,7 +90,7 @@ module.exports = CoreObject.extend({
       let appName = key.split(':')[0];
       if (this.apps[appName].forceHttps &&
           !(request.protocol === 'https' ||
-            ctxt.get('x-forwarded-proto') === 'https')) {
+            request.headers['x-forwarded-proto'] == 'https')) {
         throw 'Force HTTPS';
       }
       return this._getResponseForKey(key, request).then(resp => {
