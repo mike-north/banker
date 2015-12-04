@@ -85,10 +85,12 @@ module.exports = CoreObject.extend({
     });
   },
 
-  getResponseForRequest(request) {
+  getResponseForRequest(request, ctxt) {
     return this._getKeyForRequest(request).then((key) => {
       let appName = key.split(':')[0];
-      if (request.protocol !== 'https' && this.apps[appName].forceHttps) {
+      if (this.apps[appName].forceHttps &&
+          !(request.protocol === 'https' ||
+            ctxt.get('x-forwarded-proto') === 'https')) {
         throw 'Force HTTPS';
       }
       return this._getResponseForKey(key, request).then(resp => {
