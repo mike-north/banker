@@ -90,7 +90,7 @@ module.exports = CoreObject.extend({
       let appName = key.split(':')[0];
       console.log(`app name: ${appName}`);
       console.log(`force https: ${this.apps[appName].forceHttps}`);
-      console.log(`protocol: ${this.request.protocol}`);
+      console.log(`protocol: ${request.protocol}`);
       console.log(`heroku protocol: ${request.headers['x-forwarded-proto']}`);
       console.log(`headers: ${request.headers}`);
       if (this.apps[appName].forceHttps &&
