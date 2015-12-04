@@ -30,6 +30,10 @@ module.exports = CoreObject.extend({
     const datasource = this.datasource;
 
     this.app.use(function*(/*next*/) {
+      if (this.get('x-forwarded-proto') &&
+          this.get('x-forwarded-proto') === 'https') {
+        this.request.protocol = 'https';
+      }
       yield datasource.getResponseForRequest(this.request).then(dsResponse => {
         this.set('X-App-Version-Requested', `${dsResponse.requestedVersion}`);
         this.set('X-App-Version-Served', `${dsResponse.resolvedVersion}`);
