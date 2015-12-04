@@ -85,9 +85,14 @@ module.exports = CoreObject.extend({
     });
   },
 
-  getResponseForRequest(request, ctxt) {
+  getResponseForRequest(request) {
     return this._getKeyForRequest(request).then((key) => {
       let appName = key.split(':')[0];
+      console.log(`app name: ${appName}`);
+      console.log(`force https: ${this.apps[appName].forceHttps}`);
+      console.log(`protocol: ${this.request.protocol}`);
+      console.log(`heroku protocol: ${request.headers['x-forwarded-proto']}`);
+      console.log(`headers: ${request.headers}`);
       if (this.apps[appName].forceHttps &&
           !(request.protocol === 'https' ||
             request.headers['x-forwarded-proto'] == 'https')) {

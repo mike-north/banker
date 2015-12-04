@@ -30,7 +30,7 @@ module.exports = CoreObject.extend({
     const datasource = this.datasource;
 
     this.app.use(function*(/*next*/) {
-      yield datasource.getResponseForRequest(this.request, this)
+      yield datasource.getResponseForRequest(this.request)
       .then(dsResponse => {
         this.set('X-App-Version-Requested', `${dsResponse.requestedVersion}`);
         this.set('X-App-Version-Served', `${dsResponse.resolvedVersion}`);
