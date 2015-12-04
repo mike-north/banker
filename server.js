@@ -35,18 +35,27 @@ module.exports = CoreObject.extend({
         this.set('X-App-Version-Served', `${dsResponse.resolvedVersion}`);
         this.body = dsResponse.html;
       }).catch((err) => {
-        console.error('ERROR', err, err.stack);
-        if (err.status && err.status === 404) {
-          this.response.status = 404;
-          this.body = `404 - ${err.message}`;
+        if (err === 'Force HTTPS') {
+          let newURL = 'https://' + this.request.host;
+          console.log(`Force HTTPS - redirecting to URL: ${newURL}`);
+          this.redirect(newURL);
+          this.response.status = 302;
+          return;
         } else {
-          this.response.status = 500;
-          this.body = `500 - Internal Server Error\n${err}`;
+          console.error('ERROR', err, err.stack);
+          if (err.status && err.status === 404) {
+            this.response.status = 404;
+            this.body = `404 - ${err.message}`;
+          } else {
+            this.response.status = 500;
+            this.body = `500 - Internal Server Error\n${err}`;
+          }
         }
       });
     });
   },
   listen(port) {
+    console.log(`Listening on port: ${port}`);
     this.app.listen(port);
   },
 });

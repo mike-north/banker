@@ -41,6 +41,7 @@ module.exports = CoreObject.extend({
   getAppNameForRequest(request) {
     const fullUrl = request.host + request.url;
     for (let r in this._regexToApp) {
+      console.log(fullUrl);
       if (this._regexToApp[r].regex.test(fullUrl)) {
         return RSVP.resolve(this._regexToApp[r].app);
       }
@@ -86,6 +87,10 @@ module.exports = CoreObject.extend({
 
   getResponseForRequest(request) {
     return this._getKeyForRequest(request).then((key) => {
+      let appName = key.split(':')[0];
+      if (request.protocol !== 'https' && this.apps[appName].forceHttps) {
+        throw 'Force HTTPS';
+      }
       return this._getResponseForKey(key, request).then(resp => {
         resp.requestedVersion = key;
         return resp;
