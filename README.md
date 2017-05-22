@@ -1,5 +1,7 @@
 # Banker
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mike-north/banker.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/mike-north/banker.svg?branch=master)](https://travis-ci.org/mike-north/banker)
 [![Code Climate](https://codeclimate.com/github/mike-north/banker/badges/gpa.svg)](https://codeclimate.com/github/mike-north/banker)
 [![Test Coverage](https://codeclimate.com/github/mike-north/banker/badges/coverage.svg)](https://codeclimate.com/github/mike-north/banker/coverage)
